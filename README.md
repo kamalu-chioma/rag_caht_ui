@@ -1,54 +1,41 @@
 # Business-Specific RAG Chat Interface  
-*Built with LangFlow & DataStax Astra DB*  
+*Built with LangFlow & DataStax Astra DB*
 
 ---
 
 ## 📖 Overview  
-This project uses **LangFlow** and **DataStax Astra DB** (vector database) to create a secure RAG system for querying proprietary or internal data. Designed for:  
-- Querying using data **not exposed to public AI models**.  
-- **Custom synonym/term mapping**
-- **API integration** for chat-style responses.  
+This project implements a secure Retrieval-Augmented Generation (RAG) system using **LangFlow** and **DataStax Astra DB** for querying internal business data that is not exposed to public LLMs. It supports synonym mapping, glossary integration, and real-time API responses.
 
 ---
 
 ## ✨ Key Features  
-- **Visual RAG Pipeline**: Designed in LangFlow with hybrid search (vector + keyword).  
-- **Astra DB Integration**: Securely stores vectorized data for similarity searches.  
-- **Business Glossary Support**: Map internal terms to standardized descriptions.  
+- **Visual RAG Pipeline** via LangFlow  
+- **Astra DB Vector Search** for fast, private semantic retrieval  
+- **Custom Glossary Mapping** to interpret internal business terms
 
 ---
 
-## 🧠 Technical Flow  
-1. **Data Ingestion**:  
-   - Upload internal documents (PDFs, CSVs) to LangFlow to describe the company specific data.  
-   - Define synonyms/metadata for domain-specific terms.  
+## 🧠 Workflow  
+1. **Ingest Data**: Upload internal PDFs/CSVs into LangFlow  
+2. **Vectorize**: Convert terms into embeddings and store in Astra DB  
+3. **Query & Respond**: Use natural language to retrieve relevant context → generate answers
 
-2. **Vectorization**:  
-   - Critical data fields are vectorized and stored in **Astra DB**.  
+---
 
-3. **Query Handling**:  
-   - Natural language queries → Hybrid search in Astra DB → Context-aware responses via API.  
+## 🔬 Demo Example: Medical Use Case  
 
-----
+**Glossary Term Example**  
+| Term         | Meaning                                                        |
+|--------------|----------------------------------------------------------------|
+| Coalin 10XR  | Narrowing of the stomach outlet due to scarring/inflammation  |
 
-## 🎥 Demo: Using Custom Medical Terms to Query Patient Data  
-
-### **Example**  
-- **Custom Term**:
-
-| Local Term    | Description                                                               |
-| ------------- | ------------------------------------------------------------------------- |
-| Coalin 10XR   | Narrowing of the pylorus (stomach outlet) due to scarring or inflammation.|
-
-- **RAG Data**: Patient records split across tables (`patients`, `conditions`, `visits`), with **only condition names vectorized**. The terminologies in these databases are standard.  
-
-- The terms are intentionally random and meaningless to ensure results come solely from RAG, not LLM knowledge.
+- Vectorized only `condition` terms across `patients`, `conditions`, `visits` collections  
+- Terms like "Coalin 10XR" are random to ensure retrieval happens solely via vector search, not LLM memory
 
 **User Query**:  
+*"Does Coalin 10XR have a treatment plan in any patient record?"*
 
-### **Workflow**  
-![Workflow](screenshots/Langflow.png)  
+---
 
-
-### **Chat Interface**  
-![Chat](screenshots/Chat.png)  
+## 🖼️ Workflow Screenshot  
+![Workflow](screenshots/Langflow.png)
