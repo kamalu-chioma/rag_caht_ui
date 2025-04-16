@@ -37,5 +37,5 @@ This project implements a secure Retrieval-Augmented Generation (RAG) system usi
 
 ---
 
-## 🖼️ Workflow Screenshot  
-![Workflow](screenshots/Langflow.png)
+## 🖼️ Workflow   
+![Workflow](Langflow.png)
