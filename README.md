@@ -1,7 +1,6 @@
 # Business-Specific RAG Chat Interface  
 *Built with LangFlow & DataStax Astra DB*
 
----
 
 ## 📖 Overview  
 This project implements a secure Retrieval-Augmented Generation (RAG) system using **LangFlow** and **DataStax Astra DB** for querying internal business data that is not exposed to public LLMs. It supports synonym mapping, glossary integration, and real-time API responses.
@@ -34,8 +33,3 @@ This project implements a secure Retrieval-Augmented Generation (RAG) system usi
 
 **User Query**:  
 *"Does Coalin 10XR have a treatment plan in any patient record?"*
-
----
-
-## 🖼️ Workflow   
-![Workflow](Langflow.png)
